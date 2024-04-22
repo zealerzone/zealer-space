@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Button } from "@zealer/ui";
 
-export default function Page(): JSX.Element {
+export default async function Page(): Promise<JSX.Element> {
   return (
     <main className="flex h-screen items-center justify-center">
       <section className="container px-4 md:px-6">
@@ -18,7 +18,9 @@ export default function Page(): JSX.Element {
           </div>
           <div className="mx-auto w-full max-w-sm space-y-2">
             <div className="flex justify-center">
-              <Button type="button">Subscribe</Button>
+              <Link href={"/auth/login"}>
+                <Button type="button">SIGN IN</Button>
+              </Link>
             </div>
             <p className="text-xs text-gray-500 dark:text-gray-400">
               Subscribe for more information and updates.

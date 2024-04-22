@@ -8,7 +8,7 @@ export * from "./components/ui/button";
 // export * from "./components/ui/calendar";
 export * from "./components/ui/card";
 export * from "./components/ui/checkbox";
-// export * from "./components/ui/command";
+export * from "./components/ui/command";
 // export * from "./components/ui/context-menu";
 // export * from "./components/ui/date-picker";
 export * from "./components/ui/dialog";
@@ -38,6 +38,6 @@ export * from "./components/ui/toggle";
 export * from "./components/ui/sonner";
 
 //  Icons and Theam export
-export * from "./components/Icon";
+export * from "./components/LucIcon";
 export * from "./components/theme-toggle";
 export * from "./components/theme-provider";

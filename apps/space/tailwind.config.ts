@@ -1,5 +1,6 @@
-import sharedTailwindConfig from "@zealer/ui/tailwind.config";
 import type { Config } from "tailwindcss";
+
+import sharedTailwindConfig from "@zealer/ui/tailwind.config";
 
 const config: Config = {
   ...sharedTailwindConfig,
