@@ -4,7 +4,7 @@ import { Button } from "@zealer/ui";
 
 export default async function Page(): Promise<JSX.Element> {
   return (
-    <main className="flex h-screen items-center justify-center">
+    <div className="min-screen-h flex items-center justify-center">
       <section className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
@@ -31,6 +31,6 @@ export default async function Page(): Promise<JSX.Element> {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

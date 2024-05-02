@@ -73,6 +73,40 @@ body {
   }
 }
 
+@layer utilities {
+  .h1 {
+    @apply text-6xl font-medium tracking-[-2px] lg:text-[72px] lg:leading-[80px];
+  }
+
+  .h2 {
+    @apply text-4xl font-bold;
+  }
+
+  .h3 {
+    @apply text-3xl font-bold;
+  }
+
+  .h4 {
+    @apply text-[22px] font-semibold;
+  }
+
+  .subtitle {
+    @apply mb-8 text-lg font-light;
+  }
+
+  .wrapper {
+    @apply w-full max-w-7xl p-5 md:px-10 lg:mx-auto xl:px-0;
+  }
+
+  .article-text {
+    @apply mb-8 text-xl;
+  }
+
+  .h-cover {
+    @apply min-h-[calc(88vh)];
+  }
+}
+
 /* browser scrollbar */
 ::-webkit-scrollbar {
   @apply bg-primary/20 h-1 w-[6px];

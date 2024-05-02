@@ -4,6 +4,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { cn } from "@ui/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,15 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <body
+        className={cn("bg-background flex-col antialiased", inter.className)}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          disableTransitionOnChange
+          enableSystem
+        >
           {children}
           <Toaster position="top-center" />
         </ThemeProvider>

@@ -39,5 +39,7 @@ export * from "./components/ui/sonner";
 
 //  Icons and Theam export
 export * from "./components/LucIcon";
+export * from "./components/ReactIcon";
 export * from "./components/theme-toggle";
 export * from "./components/theme-provider";
+export * from "./components/MontionComp";

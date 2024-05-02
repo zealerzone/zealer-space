@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
 import { createBrowserClient } from "@supabase/ssr";
 
-export const getUser = async () => {
+export const getUser = () => {
   const auth = getSupabaseAuth();
-  const user = (await auth.getUser()).data.user;
-  if (!user) redirect("/auth/login");
+  const user = auth.getUser();
+  // if (!user) redirect("/auth/login");
 
   return user;
 };

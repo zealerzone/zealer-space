@@ -1,11 +1,12 @@
+"use server";
+
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 
 export const getUser = async () => {
   const auth = getSupabaseAuth();
   const user = (await auth.getUser()).data.user;
-  if (!user) redirect("/auth/login");
+  // if (!user) redirect("/auth/login");
 
   return user;
 };
