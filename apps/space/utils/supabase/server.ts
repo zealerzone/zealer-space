@@ -3,16 +3,15 @@
 import { cookies } from "next/headers";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 
-export const getUser = async () => {
-  const auth = getSupabaseAuth();
-  const user = (await auth.getUser()).data.user;
-  // if (!user) redirect("/auth/login");
+import { env } from "@/env";
 
-  return user;
+export const getUser = async () => {
+  const supabase = await createClient();
+  return (await supabase.auth?.getUser())?.data?.user;
 };
 export const isLoggedIn = async () => {
-  const auth = getSupabaseAuth();
-  const user = (await auth.getUser()).data.user;
+  const supabase = await createClient();
+  const user = (await supabase.auth?.getUser())?.data?.user;
 
   if (user) {
     return true;
@@ -21,12 +20,12 @@ export const isLoggedIn = async () => {
   }
 };
 
-export const getSupabaseAuth = () => {
+export const createClient = () => {
   const cookieStore = cookies();
 
-  const supabaseClient = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  return createServerClient(
+    env.NEXT_PUBLIC_SUPABASE_URL!,
+    env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
         get(name: string) {
@@ -49,5 +48,4 @@ export const getSupabaseAuth = () => {
       },
     },
   );
-  return supabaseClient.auth;
 };

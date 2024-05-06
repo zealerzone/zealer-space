@@ -1,17 +1,11 @@
-import { redirect } from "next/navigation";
 import { createBrowserClient } from "@supabase/ssr";
 
-export const getUser = () => {
-  const auth = getSupabaseAuth();
-  const user = auth.getUser();
-  // if (!user) redirect("/auth/login");
+import { env } from "@/env";
 
-  return user;
-};
-export function getSupabaseAuth() {
+function createClient() {
   const supabaseClient = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    env.NEXT_PUBLIC_SUPABASE_URL!,
+    env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
   );
   return supabaseClient.auth;
 }

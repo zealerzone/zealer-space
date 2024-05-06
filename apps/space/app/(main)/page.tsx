@@ -17,11 +17,6 @@ export default async function Page(): Promise<JSX.Element> {
             </p>
           </div>
           <div className="mx-auto w-full max-w-sm space-y-2">
-            <div className="flex justify-center">
-              <Link href={"/auth/login"}>
-                <Button type="button">SIGN IN</Button>
-              </Link>
-            </div>
             <p className="text-xs text-gray-500 dark:text-gray-400">
               Subscribe for more information and updates.
               <Link className="underline underline-offset-2" href="#">

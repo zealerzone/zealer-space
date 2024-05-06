@@ -11,15 +11,15 @@ const SocialLogin: FC<SocialLoginProps> = () => {
         className="w-full"
         // onClick={() => onClick("google")}
       >
-        <ReactIcon iconName="FaGoogle" className="h-5 w-5" />
+        <ReactIcon.FaGoogle />
       </Button>
       <Button
         variant={"outline"}
         className="w-full"
         // onClick={() => onClick("github")}
       >
-        App
-        {/* <ReactIcon iconName="faApple" className="h-5 w-5" /> */}
+        Apple
+        <ReactIcon.FaApple />
       </Button>
     </div>
   );

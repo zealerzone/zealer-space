@@ -18,7 +18,6 @@ const LoginButton: FC<LoginButtonProps> = ({
   mode = "redirect",
 }) => {
   const router = useRouter();
-
   const onClick = () => {
     router.push("/auth/login");
   };
