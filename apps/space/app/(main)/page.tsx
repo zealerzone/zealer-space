@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { Button } from "@zealer/ui";
 
 export default async function Page(): Promise<JSX.Element> {
   return (

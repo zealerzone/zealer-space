@@ -68,7 +68,7 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
   //   },
 ];
 
-const SideNav: FC<SideNavProps> = ({}) => {
+const SideNav: FC<SideNavProps> = () => {
   return (
     <div className="flex h-screen min-w-56 max-w-56 flex-col">
       <nav className="group z-10 flex h-full flex-col justify-between overflow-y-auto border-r py-2 shadow-xl">

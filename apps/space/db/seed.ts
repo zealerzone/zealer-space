@@ -3,9 +3,8 @@ import { getTableName, sql, Table } from "drizzle-orm";
 import { connection, db, dbType } from "@/db";
 import * as schema from "@/db/schema";
 import * as seeds from "@/db/seeds";
-import { env } from "@/env";
 
-if (env.DB_SEEDING !== "Y") {
+if (process.env.DB_SEEDING !== "Y") {
   throw new Error('You must set DB_SEEDING to "true" when running seeds');
 }
 
