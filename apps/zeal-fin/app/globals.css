@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 70 60% 98%;
+    --foreground: 144 100% 11%;
+
+    --primary: 143 74% 25%;
+    --primary-foreground: 135 40% 98%;
+
+    --secondary: 117 32% 87%;
+    --secondary-foreground: 143 74% 25%;
+
+    --tertiary: 192 73% 85%;
+    --tertiary-foreground: 190 100% 7%;
+
+    --muted: 117 32% 87%;
+    --muted-foreground: 137 16% 47%;
+    --accent: 117 32% 87%;
+    --accent-foreground: 143 74% 25%;
+
+    --card: 70 60% 98%;
+    --card-foreground: 144 100% 11%;
+    --popover: 70 60% 98%;
+    --popover-foreground: 144 100% 11%;
+
+    --destructive: 0 75% 42%;
+    --destructive-foreground: 135 40% 98%;
+    --border: 143 32% 91%;
+    --input: 143 32% 91%;
+    --ring: 144 100% 11%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 100 16% 10%;
+    --foreground: 130 60% 97%;
+
+    --primary: 131 53% 68%;
+    --primary-foreground: 147 100% 11%;
+    --secondary: 127 14% 26%;
+    --secondary-foreground: 131 53% 68%;
+
+    --muted: 127 14% 26%;
+    --muted-foreground: 117 18% 76%;
+    --accent: 127 14% 26%;
+    --accent-foreground: 131 53% 68%;
+
+    --tertiary: 192 42% 74%;
+    --tertiary-foreground: 189 97% 13%;
+
+    --card: 100 16% 10%;
+    --card-foreground: 130 60% 97%;
+    --popover: 100 16% 10%;
+    --popover-foreground: 130 60% 97%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 130 60% 97%;
+    --border: 127 14% 26%;
+    --input: 127 14% 26%;
+    --ring: 84 8% 88%;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .h1 {
+    @apply text-6xl font-medium tracking-[-2px] lg:text-[72px] lg:leading-[80px];
+  }
+
+  .h2 {
+    @apply text-4xl font-bold;
+  }
+
+  .h3 {
+    @apply text-3xl font-bold;
+  }
+
+  .h4 {
+    @apply text-[22px] font-semibold;
+  }
+
+  .subtitle {
+    @apply mb-8 text-lg font-light;
+  }
+
+  .wrapper {
+    @apply w-full max-w-7xl p-5 md:px-10 lg:mx-auto xl:px-0;
+  }
+
+  .article-text {
+    @apply mb-8 text-xl;
+  }
+
+  .h-cover {
+    @apply min-h-[calc(88vh)];
+  }
+}
+
+/* browser scrollbar */
+::-webkit-scrollbar {
+  @apply bg-primary/20 h-1 w-[6px];
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/60 rounded-full;
+}
