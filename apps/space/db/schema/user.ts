@@ -28,9 +28,9 @@ export const user = pgTable(
     avatarUrl: text("avatar_url"),
     role: roleEnum("role").default("USER").notNull(),
     bio: text("bio"),
-    activity: categoryEnum("activity").notNull().default("OTHER"),
+    activity: categoryEnum("activity").notNull(),
     dob: date("dob", { mode: "string" }),
-    verifyStatus: statusEnum("verify_status").default("NOT VERIFIED").notNull(),
+    verifyStatus: statusEnum("verify_status").notNull(),
     addressLine1: text("address_line1"),
     addressLine2: text("address_line2"),
     zipCode: integer("zip_code"),
@@ -57,10 +57,10 @@ export const user = pgTable(
 export const userCircle = pgTable(
   "user_circle",
   {
-    userId: integer("user_id")
+    userId: uuid("user_id")
       .references(() => user.id)
       .notNull(),
-    circleId: integer("circle_id")
+    circleId: uuid("circle_id")
       .references(() => circle.id)
       .notNull(),
     isAdmin: boolean("is_admin").notNull().default(false),

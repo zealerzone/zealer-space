@@ -7,10 +7,10 @@ export const circle = pgTable("circle", {
   name: text("name").notNull(),
   decs: text("description"),
   imageUrl: text("image_url"),
-  category: categoryEnum("category").notNull().default("OTHER"),
-  plan: planEnum("plan").notNull().default("FREE"),
+  category: categoryEnum("category").notNull(),
+  plan: planEnum("plan").notNull(),
   state: text("state"),
   city: text("city"),
 });
 
-export type UserType = typeof circle.$inferSelect;
+export type CircleType = typeof circle.$inferSelect;

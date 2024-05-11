@@ -3,17 +3,17 @@ import postgres from "postgres";
 
 import * as schema from "@/db/schema";
 
+require("dotenv").config({ path: ".env.local" });
 
-export const connection = postgres(process.env.DATABASE_URL!, {
-  max:process.env.DB_MIGRATION === "Y" ||process.env.DB_SEEDING === "Y" ? 1 : undefined,
-  onnotice:process.env.DB_SEEDING === "Y" ? () => {} : undefined,
-});
+if (!process.env.DATABASE_URL) {
+  throw new Error("DATABASE_URL is missing");
+}
 
-export const db = drizzle(connection, {
+const client = postgres(process.env.DATABASE_URL!);
+
+const db = drizzle(client, {
   schema,
   logger: true,
 });
-
-export type dbType = typeof db;
 
 export default db;

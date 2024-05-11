@@ -27,8 +27,8 @@ CREATE TABLE IF NOT EXISTS "circle" (
 	"name" text NOT NULL,
 	"description" text,
 	"image_url" text,
-	"category" "category" DEFAULT 'OTHER' NOT NULL,
-	"plan" "plan" DEFAULT 'FREE' NOT NULL,
+	"category" "category" NOT NULL,
+	"plan" "plan" NOT NULL,
 	"state" text,
 	"city" text
 );
@@ -44,9 +44,9 @@ CREATE TABLE IF NOT EXISTS "user" (
 	"avatar_url" text,
 	"role" "role" DEFAULT 'USER' NOT NULL,
 	"bio" text,
-	"activity" "category" DEFAULT 'OTHER' NOT NULL,
+	"activity" "category" NOT NULL,
 	"dob" date,
-	"verify_status" "verify_status" DEFAULT 'NOT VERIFIED' NOT NULL,
+	"verify_status" "verify_status" NOT NULL,
 	"address_line1" text,
 	"address_line2" text,
 	"zip_code" integer,
@@ -65,8 +65,8 @@ CREATE TABLE IF NOT EXISTS "user" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "user_circle" (
-	"user_id" integer NOT NULL,
-	"circle_id" integer NOT NULL,
+	"user_id" uuid NOT NULL,
+	"circle_id" uuid NOT NULL,
 	"is_admin" boolean DEFAULT false NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL

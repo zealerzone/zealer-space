@@ -31,7 +31,10 @@ export default function RootLayout({
           enableSystem
         >
           {children}
-          <Toaster position="top-center" />
+          <Toaster
+            position="top-center"
+            toastOptions={{ style: { textAlign: "center" } }}
+          />
         </ThemeProvider>
       </body>
     </html>

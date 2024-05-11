@@ -1,5 +1,5 @@
 {
-  "id": "7f841659-5598-456f-b1c1-436ad2a9fb39",
+  "id": "37a0be7e-1d21-479a-88d9-ae6b077c6a7d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -36,15 +36,13 @@
           "name": "category",
           "type": "category",
           "primaryKey": false,
-          "notNull": true,
-          "default": "'OTHER'"
+          "notNull": true
         },
         "plan": {
           "name": "plan",
           "type": "plan",
           "primaryKey": false,
-          "notNull": true,
-          "default": "'FREE'"
+          "notNull": true
         },
         "state": {
           "name": "state",
@@ -133,8 +131,7 @@
           "name": "activity",
           "type": "category",
           "primaryKey": false,
-          "notNull": true,
-          "default": "'OTHER'"
+          "notNull": true
         },
         "dob": {
           "name": "dob",
@@ -146,8 +143,7 @@
           "name": "verify_status",
           "type": "verify_status",
           "primaryKey": false,
-          "notNull": true,
-          "default": "'NOT VERIFIED'"
+          "notNull": true
         },
         "address_line1": {
           "name": "address_line1",
@@ -271,13 +267,13 @@
       "columns": {
         "user_id": {
           "name": "user_id",
-          "type": "integer",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         },
         "circle_id": {
           "name": "circle_id",
-          "type": "integer",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         },

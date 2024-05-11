@@ -14,8 +14,7 @@
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
     "db:generate": "drizzle-kit generate:pg",
-    "db:migrate": "DB_MIGRATION=Y tsx db/migrate.ts",
-    "db:seed": "DB_SEEDING='Y' tsx db/seed.ts",
+    "db:migrate": "tsx -r dotenv/config db/migrate.ts",
     "studio": "drizzle-kit studio"
   },
   "dependencies": {
@@ -32,22 +31,23 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.51.4",
-    "zod": "^3.23.6"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.2.3",
-    "@types/node": "^20.12.8",
+    "@types/node": "^20.12.11",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
     "@zealer/eslint-config": "workspace:^",
     "@zealer/typescript-config": "workspace:*",
-    "drizzle-kit": "^0.20.17",
+    "dotenv": "^16.4.5",
+    "drizzle-kit": "^0.20.18",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.3",
     "eslint-plugin-drizzle": "^0.2.3",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
-    "tsx": "^4.9.3",
+    "tsx": "^4.9.4",
     "typescript": "^5.4.5"
   }
 }

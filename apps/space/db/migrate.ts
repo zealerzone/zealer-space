@@ -1,19 +1,23 @@
+import { drizzle } from "drizzle-orm/postgres-js";
 import { migrate } from "drizzle-orm/postgres-js/migrator";
+import postgres from "postgres";
 
-import { connection, db } from "@/db";
-import config from "@/drizzle.config";
+require("dotenv").config({ path: ".env.local" });
 
-
-async function main() {
-  console.log(" env Variables -> ", process.env);
-
-  if (process.env.DB_MIGRATION !== "Y") {
-    throw new Error('You must set DB_MIGRATION to "Y" when running migrations');
+const pushmigration = async () => {
+  if (!process.env.DATABASE_URL) {
+    throw new Error("DATABASE_URL is missing");
   }
 
-  await migrate(db, { migrationsFolder: config.out! });
+  const migrationclient = postgres(process.env.DATABASE_URL!, {
+    max: 1,
+  });
+  const migrationdb = drizzle(migrationclient);
 
-  await connection.end();
-}
+  await migrate(migrationdb, {
+    migrationsFolder: "./db/migrations",
+  });
+  await migrationclient.end();
+};
 
-main();
+pushmigration();
