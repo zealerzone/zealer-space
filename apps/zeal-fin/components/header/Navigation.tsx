@@ -45,12 +45,12 @@ const Navigation: FC<NavigationProps> = () => {
   if (isMobile) {
     return (
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        <SheetTrigger>
+        <SheetTrigger asChild>
           <Button variant={"outline"} size={"icon"}>
             <LucIcon iconName="Menu" className="size-4" />
           </Button>
         </SheetTrigger>
-        <SheetContent side={"left"} className="px-2">
+        <SheetContent side={"left"} className="h-full px-2">
           <nav className="flex flex-col gap-y-2 pt-6">
             {routes.map((r) => (
               <Button
