@@ -1,10 +1,8 @@
-"use client";
-
 import { FC, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Button, LucIcon, Sheet, SheetContent, SheetTrigger } from "@ui/index";
+import { useMedia } from "react-use";
 
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 import NavButton from "./NavButton";
 
 interface NavigationProps {}
@@ -36,7 +34,7 @@ const Navigation: FC<NavigationProps> = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
-  const isMobile = useMediaQuery("(max-width: 1024px)");
+  const isMobile = useMedia("(max-width: 1024px)");
   const onClick = (href: string) => {
     router.push(href);
     setIsOpen(false);

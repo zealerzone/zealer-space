@@ -1,11 +1,13 @@
-"use client";
-
 import { FC } from "react";
 import { useUser } from "@clerk/nextjs";
+import { useMountedState } from "react-use";
 
 interface WelcomeMsgProps {}
 
 const WelcomeMsg: FC<WelcomeMsgProps> = () => {
+  const isMounted = useMountedState();
+
+  if (!isMounted) return null;
   const { user, isLoaded } = useUser();
 
   return (
