@@ -2,12 +2,12 @@
 
 import { Button } from "@ui/index";
 
-import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
-import { useNewAccount } from "@/features/accounts/hooks/useNewAccount";
+import { useGetAccounts } from "@/features/accounts/api/useGetAccounts";
+import { useNewAccountZus } from "@/features/accounts/hooks/useNewAccountZus";
 
 export default function Home() {
   const { data: accounts, isLoading } = useGetAccounts();
-  const { onOpen } = useNewAccount();
+  const { onOpen } = useNewAccountZus();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Button, LucIcon, Sheet, SheetContent, SheetTrigger } from "@ui/index";

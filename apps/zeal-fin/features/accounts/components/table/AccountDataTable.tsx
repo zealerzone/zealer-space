@@ -1,14 +1,22 @@
 "use client";
 
+import { useState } from "react";
 import {
   ColumnDef,
+  ColumnFiltersState,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
+  Row,
+  SortingState,
   useReactTable,
 } from "@tanstack/react-table";
 import {
   Button,
+  Input,
+  LucIcon,
   Table,
   TableBody,
   TableCell,
@@ -17,24 +25,81 @@ import {
   TableRow,
 } from "@ui/index";
 
+import { useConfirm } from "@/hooks/useConfirm";
+
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  filterKey: string;
+  onDelete: (rows: Row<TData>[]) => void;
+  disabled?: boolean;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  filterKey,
+  onDelete,
+  disabled,
 }: DataTableProps<TData, TValue>) {
+  const [sorting, setSorting] = useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [rowSelection, setRowSelection] = useState({});
+
+  const [ConfirmDialog, confirm] = useConfirm(
+    "Are you sure?",
+    "You are about to perform a bulk delete.",
+  );
+
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
+    onColumnFiltersChange: setColumnFilters,
+    getFilteredRowModel: getFilteredRowModel(),
+    onRowSelectionChange: setRowSelection,
+    state: {
+      sorting,
+      columnFilters,
+      rowSelection,
+    },
   });
 
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col gap-4">
+      <ConfirmDialog />
+      <div className="flex items-center py-4">
+        <Input
+          placeholder={`Filter ${filterKey} ...`}
+          value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn(filterKey)?.setFilterValue(event.target.value)
+          }
+          className="w-80"
+        />
+        {table.getSelectedRowModel().rows.length > 0 && (
+          <Button
+            disabled={disabled}
+            onClick={async () => {
+              const ok = await confirm();
+
+              if (ok) {
+                onDelete(table.getFilteredSelectedRowModel().rows);
+                table.resetRowSelection();
+              }
+            }}
+            className="ml-auto  text-sm "
+            variant={"outline"}
+            size={"sm"}
+          >
+            <LucIcon className="mr-2 size-4" iconName="Trash" />
+            <span>Delete ({table.getSelectedRowModel().rows.length})</span>
+          </Button>
+        )}
+      </div>
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -85,23 +150,29 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
+      <div className="flex flex-col items-center justify-center gap-2 py-4">
+        <div className="text-muted-foreground flex-1 text-sm">
+          {table.getFilteredSelectedRowModel().rows.length} of{" "}
+          {table.getFilteredRowModel().rows.length} row(s) selected.
+        </div>
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            Previous
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            Next
+          </Button>
+        </div>
       </div>
     </div>
   );

@@ -8,39 +8,61 @@ import {
   CardHeader,
   CardTitle,
   LucIcon,
+  Skeleton,
 } from "@ui/index";
 
-import { useNewAccount } from "@/features/accounts/hooks/useNewAccount";
-import { columns, Payment } from "./table/accountColumns";
+import { useBulkDeleteAccounts } from "../api/useBulkDelete";
+import { useGetAccounts } from "../api/useGetAccounts";
+import { useNewAccountZus } from "../hooks/useNewAccountZus";
+import { columns } from "./table/accountColumns";
 import { DataTable } from "./table/AccountDataTable";
 
 interface AccountSection1Props {}
 
-const data: Payment[] = [
-  {
-    id: "728ed52f",
-    amount: 100,
-    status: "pending",
-    email: "m@example.com",
-  },
-];
-
 export const AccountSection1: FC<AccountSection1Props> = () => {
-  const { onOpen } = useNewAccount();
-  return (
-    <div className="mx-auto -mt-24 w-full max-w-screen-2xl pb-10">
+  const { onOpen } = useNewAccountZus();
+  const accountsQuery = useGetAccounts();
+  const deleteAccounts = useBulkDeleteAccounts();
+
+  const disabled = accountsQuery.isLoading || deleteAccounts.isPending;
+  const accounts = accountsQuery.data || [];
+
+  if (accountsQuery.isLoading) {
+    return (
       <Card className="border-none drop-shadow-sm">
-        <CardHeader className="lg:flex-row lg:items-center lg:justify-between">
-          <CardTitle className="line-clamp-1 text-xl">Accounts Page</CardTitle>
-          <Button onClick={onOpen} size={"sm"}>
-            <LucIcon iconName="Plus" className="mr-2 size-4" />
-            Add new
-          </Button>
+        <CardHeader>
+          <Skeleton className="h-8 w-48" />
         </CardHeader>
-        <CardContent>
-          <DataTable columns={columns} data={data} />
+        <CardContent className="flex h-[500px] w-full items-center justify-center">
+          <LucIcon
+            iconName="LoaderCircle"
+            className="size-6 animate-spin text-slate-300"
+          />
         </CardContent>
       </Card>
-    </div>
+    );
+  }
+  return (
+    <Card className="border-none drop-shadow-sm">
+      <CardHeader className="flex flex-row items-center justify-between">
+        <CardTitle className="line-clamp-1  text-xl">Accounts Page</CardTitle>
+        <Button onClick={onOpen} size={"sm"}>
+          <LucIcon iconName="Plus" className="mr-2 size-4" />
+          Add new
+        </Button>
+      </CardHeader>
+      <CardContent>
+        <DataTable
+          filterKey={"name"}
+          onDelete={(row) => {
+            const ids = row.map((r) => r.original.id);
+            deleteAccounts.mutate({ ids });
+          }}
+          disabled={disabled}
+          columns={columns}
+          data={accounts}
+        />
+      </CardContent>
+    </Card>
   );
 };

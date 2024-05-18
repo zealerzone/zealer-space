@@ -8,13 +8,13 @@ import {
 } from "@ui/index";
 
 import { useCreateAccount } from "../api/useCreateAccount";
-import { useNewAccount } from "../hooks/useNewAccount";
+import { useNewAccountZus } from "../hooks/useNewAccountZus";
 import AccountForm, { FormAccountValues } from "./AccountForm";
 
 interface NewAccountSheetProps {}
 
 const NewAccountSheet: FC<NewAccountSheetProps> = ({}) => {
-  const { isOpen, onClose } = useNewAccount();
+  const { isOpen, onClose } = useNewAccountZus();
   const { mutate, isPending } = useCreateAccount();
 
   const onSubmit = (values: FormAccountValues) => {
