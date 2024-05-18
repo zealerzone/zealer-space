@@ -11,15 +11,15 @@ import {
   Skeleton,
 } from "@ui/index";
 
-import { useBulkDeleteAccounts } from "../api/useBulkDelete";
+import { useBulkDeleteAccounts } from "../api/useBulkDeleteAccounts";
 import { useGetAccounts } from "../api/useGetAccounts";
 import { useNewAccountZus } from "../hooks/useNewAccountZus";
 import { columns } from "./table/accountColumns";
 import { DataTable } from "./table/AccountDataTable";
 
-interface AccountSection1Props {}
+interface AccountsPageSectionProps {}
 
-export const AccountSection1: FC<AccountSection1Props> = () => {
+export const AccountsPageSection: FC<AccountsPageSectionProps> = () => {
   const { onOpen } = useNewAccountZus();
   const accountsQuery = useGetAccounts();
   const deleteAccounts = useBulkDeleteAccounts();

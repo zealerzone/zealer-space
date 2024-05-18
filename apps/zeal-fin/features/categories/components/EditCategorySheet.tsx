@@ -9,33 +9,32 @@ import {
 } from "@ui/index";
 
 import { useConfirm } from "@/hooks/useConfirm";
-import { useCreateAccount } from "../api/useCreateAccount";
-import { useDeleteAccount } from "../api/useDeleteAccount";
-import { useEditAccount } from "../api/useEditAccount";
-import { useGetAccountById } from "../api/useGetAccountById";
-import { useOpenAccountZus } from "../hooks/useOpenAccountZus";
-import AccountForm, { FormAccountValues } from "./AccountForm";
+import { useDeleteCategory } from "../api/useDeleteCategory";
+import { useEditCategory } from "../api/useEditCategory";
+import { useGetCategoryById } from "../api/useGetCategoryById";
+import { useOpenCategoryZus } from "../hooks/useOpenCategoryZus";
+import CategoryForm, { FormCategoryValues } from "./CategoryForm";
 
-interface EditAccountSheetProps {}
+interface EditCategorySheetProps {}
 
-const EditAccountSheet: FC<EditAccountSheetProps> = ({}) => {
-  const { isOpen, onClose, id } = useOpenAccountZus();
+const EditCategorySheet: FC<EditCategorySheetProps> = ({}) => {
+  const { isOpen, onClose, id } = useOpenCategoryZus();
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
-    "You are about to delete this account",
+    "You are about to delete this category",
   );
 
-  const accountByIdQuery = useGetAccountById(id);
-  const editMutation = useEditAccount(id);
-  const deleteMutation = useDeleteAccount(id);
+  const categoryByIdQuery = useGetCategoryById(id);
+  const editMutation = useEditCategory(id);
+  const deleteMutation = useDeleteCategory(id);
 
   const isPending = editMutation.isPending || deleteMutation.isPending;
 
-  const isLoading = accountByIdQuery.isLoading;
+  const isLoading = categoryByIdQuery.isLoading;
 
-  const accountDefaultValues = accountByIdQuery?.data
+  const categoryDefaultValues = categoryByIdQuery?.data
     ? {
-        name: accountByIdQuery.data.name,
+        name: categoryByIdQuery.data.name,
       }
     : {
         name: "",
@@ -53,7 +52,7 @@ const EditAccountSheet: FC<EditAccountSheetProps> = ({}) => {
     }
   };
 
-  const onSubmit = (values: FormAccountValues) => {
+  const onSubmit = (values: FormCategoryValues) => {
     editMutation.mutate(values, {
       onSuccess: () => {
         onClose();
@@ -66,8 +65,8 @@ const EditAccountSheet: FC<EditAccountSheetProps> = ({}) => {
       <Sheet open={isOpen} onOpenChange={onClose}>
         <SheetContent className="space-y-4">
           <SheetHeader>
-            <SheetTitle>Edit Account</SheetTitle>
-            <SheetDescription>Edit an existing account</SheetDescription>
+            <SheetTitle>Edit category</SheetTitle>
+            <SheetDescription>Edit an existing category</SheetDescription>
           </SheetHeader>
           {isLoading ? (
             <div className="absolute inset-0 flex items-center justify-center">
@@ -77,11 +76,11 @@ const EditAccountSheet: FC<EditAccountSheetProps> = ({}) => {
               />
             </div>
           ) : (
-            <AccountForm
+            <CategoryForm
               id={id}
               onSubmit={onSubmit}
               disabled={isPending}
-              defaultValues={accountDefaultValues}
+              defaultValues={categoryDefaultValues}
               onDelete={onDelete}
             />
           )}
@@ -91,4 +90,4 @@ const EditAccountSheet: FC<EditAccountSheetProps> = ({}) => {
   );
 };
 
-export default EditAccountSheet;
+export default EditCategorySheet;

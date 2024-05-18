@@ -4,6 +4,8 @@ import { useMountedState } from "react-use";
 
 import EditAccountSheet from "@/features/accounts/components/EditAccountSheet";
 import NewAccountSheet from "@/features/accounts/components/NewAccountSheet";
+import EditCategorySheet from "@/features/categories/components/EditCategorySheet";
+import NewCategorySheet from "@/features/categories/components/NewCategorySheet";
 
 export const SheetProvider = () => {
   const isMounted = useMountedState();
@@ -13,6 +15,8 @@ export const SheetProvider = () => {
     <>
       <NewAccountSheet />
       <EditAccountSheet />
+      <NewCategorySheet />
+      <EditCategorySheet />
     </>
   );
 };

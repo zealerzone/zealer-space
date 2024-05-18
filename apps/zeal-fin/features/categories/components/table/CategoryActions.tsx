@@ -9,21 +9,21 @@ import {
 } from "@ui/index";
 
 import { useConfirm } from "@/hooks/useConfirm";
-import { useDeleteAccount } from "../../api/useDeleteAccount";
-import { useOpenAccountZus } from "../../hooks/useOpenAccountZus";
+import { useDeleteCategory } from "../../api/useDeleteCategory";
+import { useOpenCategoryZus } from "../../hooks/useOpenCategoryZus";
 
-interface AccountActionsProps {
+interface CategoryActionsProps {
   id: string;
 }
 
-const AccountActions: FC<AccountActionsProps> = ({ id }) => {
-  const { onOpen } = useOpenAccountZus();
+const CategoryActions: FC<CategoryActionsProps> = ({ id }) => {
+  const { onOpen } = useOpenCategoryZus();
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
-    "You are about to delete this account.",
+    "You are about to delete this category.",
   );
 
-  const deleteMutation = useDeleteAccount(id);
+  const deleteMutation = useDeleteCategory(id);
 
   const handleDelete = async () => {
     const ok = await confirm();
@@ -67,4 +67,4 @@ const AccountActions: FC<AccountActionsProps> = ({ id }) => {
   );
 };
 
-export default AccountActions;
+export default CategoryActions;
