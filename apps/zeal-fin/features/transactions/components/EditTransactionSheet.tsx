@@ -8,17 +8,18 @@ import {
   SheetTitle,
 } from "@ui/index";
 
+import { useDeleteAccount } from "@/features/accounts/api/useDeleteAccount";
+import { useEditAccount } from "@/features/accounts/api/useEditAccount";
+import { useGetAccountById } from "@/features/accounts/api/useGetAccountById";
+import AccountForm, {
+  FormAccountValues,
+} from "@/features/accounts/components/AccountForm";
+import { useOpenAccountZus } from "@/features/accounts/hooks/useOpenAccountZus";
 import { useConfirm } from "@/hooks/useConfirm";
-import { useCreateAccount } from "../api/useCreateTransaction";
-import { useDeleteAccount } from "../api/useDeleteTransaction";
-import { useEditAccount } from "../api/useEditTransaction";
-import { useGetAccountById } from "../api/useGetTransactionById";
-import { useOpenAccountZus } from "../hooks/useOpenAccountZus";
-import AccountForm, { FormAccountValues } from "./AccountForm";
 
-interface EditAccountSheetProps {}
+interface EditTransactionSheetProps {}
 
-const EditAccountSheet: FC<EditAccountSheetProps> = ({}) => {
+const EditTransactionSheet: FC<EditTransactionSheetProps> = ({}) => {
   const { isOpen, onClose, id } = useOpenAccountZus();
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
@@ -91,4 +92,4 @@ const EditAccountSheet: FC<EditAccountSheetProps> = ({}) => {
   );
 };
 
-export default EditAccountSheet;
+export default EditTransactionSheet;

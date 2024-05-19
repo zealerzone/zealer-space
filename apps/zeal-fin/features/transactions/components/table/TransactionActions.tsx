@@ -8,15 +8,15 @@ import {
   LucIcon,
 } from "@ui/index";
 
+import { useDeleteAccount } from "@/features/accounts/api/useDeleteAccount";
+import { useOpenAccountZus } from "@/features/accounts/hooks/useOpenAccountZus";
 import { useConfirm } from "@/hooks/useConfirm";
-import { useDeleteAccount } from "../../api/useDeleteTransaction";
-import { useOpenAccountZus } from "../../hooks/useOpenAccountZus";
 
-interface AccountActionsProps {
+interface TransactionActionsProps {
   id: string;
 }
 
-const AccountActions: FC<AccountActionsProps> = ({ id }) => {
+const TransactionActions: FC<TransactionActionsProps> = ({ id }) => {
   const { onOpen } = useOpenAccountZus();
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
@@ -67,4 +67,4 @@ const AccountActions: FC<AccountActionsProps> = ({ id }) => {
   );
 };
 
-export default AccountActions;
+export default TransactionActions;

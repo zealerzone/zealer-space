@@ -11,23 +11,23 @@ import {
   Skeleton,
 } from "@ui/index";
 
-import { useBulkDeleteAccounts } from "../api/useBulkDeleteTransactions";
-import { useGetAccounts } from "../api/useGetTransactions";
-import { useNewAccountZus } from "../hooks/useNewAccountZus";
-import { columns } from "./table/accountColumns";
-import { DataTable } from "./table/AccountDataTable";
+import { useBulkDeleteTransactions } from "../api/useBulkDeleteTransactions";
+import { useGetTransactions } from "../api/useGetTransactions";
+import { useNewTransactionZus } from "../hooks/useNewTransactionZus";
+import { columns } from "./table/TransactionColumns";
+import { DataTable } from "./table/TransactionDataTable";
 
-interface AccountsPageSectionProps {}
+interface TransactionsPageSectionProps {}
 
-export const AccountsPageSection: FC<AccountsPageSectionProps> = () => {
-  const { onOpen } = useNewAccountZus();
-  const accountsQuery = useGetAccounts();
-  const deleteAccounts = useBulkDeleteAccounts();
+export const TransactionsPageSection: FC<TransactionsPageSectionProps> = () => {
+  const { onOpen } = useNewTransactionZus();
+  const transactionsQuery = useGetTransactions();
+  const deleteTransactions = useBulkDeleteTransactions();
 
-  const disabled = accountsQuery.isLoading || deleteAccounts.isPending;
-  const accounts = accountsQuery.data || [];
+  const disabled = transactionsQuery.isLoading || deleteTransactions.isPending;
+  const accounts = transactionsQuery.data || [];
 
-  if (accountsQuery.isLoading) {
+  if (transactionsQuery.isLoading) {
     return (
       <Card className="border-none drop-shadow-sm">
         <CardHeader>
@@ -45,7 +45,9 @@ export const AccountsPageSection: FC<AccountsPageSectionProps> = () => {
   return (
     <Card className="border-none drop-shadow-sm">
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="line-clamp-1  text-xl">Accounts Page</CardTitle>
+        <CardTitle className="line-clamp-1  text-xl">
+          Transaction History
+        </CardTitle>
         <Button onClick={onOpen} size={"sm"}>
           <LucIcon iconName="Plus" className="mr-2 size-4" />
           Add new
@@ -53,10 +55,10 @@ export const AccountsPageSection: FC<AccountsPageSectionProps> = () => {
       </CardHeader>
       <CardContent>
         <DataTable
-          filterKey={"name"}
+          filterKey={"category"}
           onDelete={(row) => {
             const ids = row.map((r) => r.original.id);
-            deleteAccounts.mutate({ ids });
+            deleteTransactions.mutate({ ids });
           }}
           disabled={disabled}
           columns={columns}

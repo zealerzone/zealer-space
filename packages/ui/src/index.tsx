@@ -43,3 +43,8 @@ export * from "./components/ReactIcon";
 export * from "./components/theme-toggle";
 export * from "./components/theme-provider";
 export * from "./components/MontionComp";
+
+// Custom UI Comp
+export * from "./components/ui/custom/custom-select";
+export * from "./components/ui/custom/custom-date-picker";
+export * from "./components/ui/custom/custom-currency";
