@@ -15,6 +15,13 @@
       "when": 1716004889984,
       "tag": "0001_chemical_luke_cage",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1716082818961,
+      "tag": "0002_glamorous_black_bolt",
+      "breakpoints": true
     }
   ]
 }
