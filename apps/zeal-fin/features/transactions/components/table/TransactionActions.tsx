@@ -9,21 +9,22 @@ import {
 } from "@ui/index";
 
 import { useDeleteAccount } from "@/features/accounts/api/useDeleteAccount";
-import { useOpenAccountZus } from "@/features/accounts/hooks/useOpenAccountZus";
 import { useConfirm } from "@/hooks/useConfirm";
+import { useDeleteTransaction } from "../../api/useDeleteTransaction";
+import { useOpenTransactionZus } from "../../hooks/useOpenTransactionZus";
 
 interface TransactionActionsProps {
   id: string;
 }
 
 const TransactionActions: FC<TransactionActionsProps> = ({ id }) => {
-  const { onOpen } = useOpenAccountZus();
+  const { onOpen } = useOpenTransactionZus();
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
-    "You are about to delete this account.",
+    "You are about to delete this transaction.",
   );
 
-  const deleteMutation = useDeleteAccount(id);
+  const deleteMutation = useDeleteTransaction(id);
 
   const handleDelete = async () => {
     const ok = await confirm();

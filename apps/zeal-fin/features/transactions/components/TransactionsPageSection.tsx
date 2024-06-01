@@ -55,7 +55,7 @@ export const TransactionsPageSection: FC<TransactionsPageSectionProps> = () => {
       </CardHeader>
       <CardContent>
         <DataTable
-          filterKey={"category"}
+          filterKey={"payee"}
           onDelete={(row) => {
             const ids = row.map((r) => r.original.id);
             deleteTransactions.mutate({ ids });
