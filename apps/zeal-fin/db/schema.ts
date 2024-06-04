@@ -32,7 +32,7 @@ export const transactions = pgTable("transactions", {
   amount: integer("amount").notNull(),
   payee: text("payee").notNull(),
   notes: text("notes"),
-  date: timestamp("dat", { mode: "date" }).notNull(),
+  date: timestamp("date", { mode: "date" }).notNull(),
   // relations
   accountId: text("account_id")
     .references(() => accounts.id, {
