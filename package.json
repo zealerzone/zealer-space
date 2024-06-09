@@ -1,6 +1,6 @@
 {
   "name": "zealer-zone",
-  "packageManager": "pnpm@9.1.1",
+  "packageManager": "pnpm@9.2.0",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -14,9 +14,9 @@
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "@zealer/eslint-config": "workspace:*",
     "@zealer/typescript-config": "workspace:*",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.1",
     "prettier-plugin-tailwindcss": "^0.5.14",
-    "turbo": "^1.13.3",
+    "turbo": "^1.13.4",
     "typescript": "^5.4.5"
   },
   "engines": {
