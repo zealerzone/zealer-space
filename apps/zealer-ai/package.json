@@ -10,10 +10,15 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.1.4",
+    "@neondatabase/serverless": "^0.9.3",
+    "@prisma/client": "^5.15.0",
     "@zealer/ui": "workspace:*",
+    "dotenv": "^16.4.5",
     "next": "14.2.3",
+    "prisma": "^5.15.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20.14.2",
