@@ -14,9 +14,9 @@
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "@zealer/eslint-config": "workspace:*",
     "@zealer/typescript-config": "workspace:*",
-    "prettier": "^3.3.1",
+    "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.5.14",
-    "turbo": "^2.0.3",
+    "turbo": "^2.0.4",
     "typescript": "^5.4.5"
   },
   "engines": {
