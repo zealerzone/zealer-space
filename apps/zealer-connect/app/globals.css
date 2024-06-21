@@ -5,34 +5,66 @@
 @layer base {
   :root {
     --gradient: #231557;
-    --background: 269 98.05% 98.42%;
-    --foreground: 269 6.1% 0.84%;
+    --background: 0, 0%, 98%;
+    --foreground: 0, 0%, 10%;
 
-    --muted: 269 6.1% 92.1%;
-    --muted-foreground: 269 3.05% 42.1%;
+    --muted: 0, 0%, 90%;
+    --muted-foreground: 0, 0%, 40%;
 
-    --popover: 269 41.2% 92.1%;
-    --popover-foreground: 269 6.1% 1.05%;
+    --popover: 0, 0%, 95%;
+    --popover-foreground: 0, 0%, 10%;
 
-    --card: 269 41.2% 92.1%;
-    --card-foreground: 269 6.1% 1.05%;
+    --card: 0, 0%, 95%;
+    --card-foreground: 0, 0%, 10%;
 
-    --border: 269 11.1% 89.84%;
-    --input: 269 11.1% 89.84%;
+    --border: 0, 0%, 85%;
+    --input: 0, 0%, 85%;
 
-    --primary: 269 61% 21%;
-    --primary-foreground: 269 1.22% 92.1%;
+    --primary: 220, 90%, 56%;
+    --primary-foreground: 0, 0%, 100%;
 
-    --secondary: 269 3.05% 96.05%;
-    --secondary-foreground: 269 4.66% 12.1%;
+    --secondary: 0, 0%, 96%;
+    --secondary-foreground: 0, 0%, 20%;
 
-    --accent: 269 3.05% 96.05%;
-    --accent-foreground: 269 4.66% 12.1%;
+    --accent: 220, 90%, 56%;
+    --accent-foreground: 0, 0%, 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --ring: 269 61% 21%;
-    --radius: 0.5rem;
+    --destructive: 0, 84%, 60%;
+    --destructive-foreground: 0, 0%, 100%;
+    --ring: 220, 90%, 56%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --gradient: #231557;
+    --background: 0, 0%, 10%;
+    --foreground: 0, 0%, 98%;
+
+    --muted: 0, 0%, 20%;
+    --muted-foreground: 0, 0%, 60%;
+
+    --popover: 0, 0%, 15%;
+    --popover-foreground: 0, 0%, 98%;
+
+    --card: 0, 0%, 15%;
+    --card-foreground: 0, 0%, 98%;
+
+    --border: 0, 0%, 25%;
+    --input: 0, 0%, 25%;
+
+    --primary: 220, 90%, 56%;
+    --primary-foreground: 0, 0%, 100%;
+
+    --secondary: 0, 0%, 20%;
+    --secondary-foreground: 0, 0%, 80%;
+
+    --accent: 220, 90%, 56%;
+    --accent-foreground: 0, 0%, 100%;
+
+    --destructive: 0, 84%, 60%;
+    --destructive-foreground: 0, 0%, 100%;
+    --ring: 220, 90%, 56%;
+    --radius: 1rem;
   }
 }
 
@@ -47,7 +79,6 @@
 html,
 body {
   height: 100%;
-  overflow-x: hidden;
 }
 
 @layer base {

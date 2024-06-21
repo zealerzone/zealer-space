@@ -8,7 +8,9 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@ui/*": ["../../packages/ui/src/*"]
+      "@ui/*": ["../../packages/ui/src/*"],
+      "@/convex/*": ["./convex/*"],
+      "@/public/*": ["./public/*"]
     }
   },
   "include": [
@@ -17,6 +19,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "middleware.ts"  ],
   "exclude": ["node_modules"]
 }

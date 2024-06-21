@@ -6,7 +6,7 @@ import "./globals.css";
 import { ThemeProvider, Toaster } from "@ui/index";
 import { cn } from "@ui/lib/utils";
 
-import ConvexClientProvider from "./(components)/ConvexClientProvider";
+import { ConvexClientProvider } from "@/providers/ConvexClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,15 +22,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn("bg-background flex-col antialiased", inter.className)}
-      >
-        <ConvexClientProvider>{children}</ConvexClientProvider>
-
-        <Toaster
-          position="top-center"
-          toastOptions={{ style: { textAlign: "center" } }}
-        />
+      <body className={cn("antialiased", inter.className)}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          disableTransitionOnChange
+          enableSystem
+        >
+          <ConvexClientProvider>{children}</ConvexClientProvider>
+          <Toaster
+            position="top-center"
+            toastOptions={{ style: { textAlign: "center" } }}
+          />
+        </ThemeProvider>
       </body>
     </html>
   );
