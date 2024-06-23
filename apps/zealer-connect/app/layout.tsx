@@ -3,10 +3,9 @@ import { Inter } from "next/font/google";
 
 import "./globals.css";
 
+import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider, Toaster } from "@ui/index";
 import { cn } from "@ui/lib/utils";
-
-import { ConvexClientProvider } from "@/providers/ConvexClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,21 +20,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={cn("antialiased", inter.className)}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          disableTransitionOnChange
-          enableSystem
-        >
-          <ConvexClientProvider>{children}</ConvexClientProvider>
-          <Toaster
-            position="top-center"
-            toastOptions={{ style: { textAlign: "center" } }}
-          />
-        </ThemeProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body className={cn("antialiased", inter.className)}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            disableTransitionOnChange
+            enableSystem
+          >
+            {children}
+
+            <Toaster
+              position="top-center"
+              toastOptions={{ style: { textAlign: "center" } }}
+            />
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

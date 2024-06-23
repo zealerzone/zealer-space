@@ -9,8 +9,8 @@
     "paths": {
       "@/*": ["./*"],
       "@ui/*": ["../../packages/ui/src/*"],
-      "@/convex/*": ["./convex/*"],
-      "@/public/*": ["./public/*"]
+      "@/public/*": ["./public/*"],
+      "@/features/*": ["./features/*"]
     }
   },
   "include": [
@@ -18,7 +18,8 @@
     "**/*.js",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "middleware.ts"  ],
+    ".next/types/**/*.ts",
+    "middleware.ts"
+  ],
   "exclude": ["node_modules"]
 }

@@ -48,3 +48,5 @@ export * from "./components/MontionComp";
 export * from "./components/ui/custom/custom-select";
 export * from "./components/ui/custom/custom-date-picker";
 export * from "./components/ui/custom/custom-currency";
+
+// MagicUI Components
