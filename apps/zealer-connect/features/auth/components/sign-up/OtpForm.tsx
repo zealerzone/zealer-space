@@ -2,12 +2,9 @@ import React from "react";
 
 import OTPInput from "./OtpInput";
 
-type Props = {
-  setOTP: React.Dispatch<React.SetStateAction<string>>;
-  onOTP: string;
-};
+type Props = {};
 
-const OTPForm = ({ onOTP, setOTP }: Props) => {
+const OTPForm = ({}: Props) => {
   return (
     <>
       <h2 className="text-gravel font-bold md:text-4xl">Enter OTP</h2>
@@ -15,7 +12,7 @@ const OTPForm = ({ onOTP, setOTP }: Props) => {
         Enter the one time password that was sent to your email.
       </p>
       <div className="flex w-full justify-center py-5">
-        <OTPInput otp={onOTP} setOtp={setOTP} />
+        <OTPInput />
       </div>
     </>
   );

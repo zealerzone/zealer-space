@@ -37,7 +37,7 @@ const FormGenerator = ({
         <Label className="flex flex-col gap-2" htmlFor={`input-${label}`}>
           {label && label}
           <Input
-            id={`input-${label}`}
+            id={`input-${label || name}`}
             type={type}
             placeholder={placeholder}
             form={form}

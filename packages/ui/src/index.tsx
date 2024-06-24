@@ -17,6 +17,7 @@ export * from "./components/ui/form";
 // export * from "./components/ui/hover-card";
 // export * from "./components/ui/input-with-addons";
 export * from "./components/ui/input";
+export * from "./components/ui/input-otp";
 export * from "./components/ui/label";
 export * from "./components/ui/popover";
 // export * from "./components/ui/progress";

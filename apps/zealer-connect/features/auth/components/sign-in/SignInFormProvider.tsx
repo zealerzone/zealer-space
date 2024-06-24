@@ -1,17 +1,18 @@
 "use client";
 
-import { FC } from "react";
+import React from "react";
 import { FormProvider } from "react-hook-form";
 
 import { Loader } from "@/components/common/Loader";
-import { useSignUpForm } from "../_hooks/useSignUpForm";
+import { useSignInForm } from "../../_hooks/useSignInForm";
 
-interface SignUpFormProviderProps {
+type Props = {
   children: React.ReactNode;
-}
+};
 
-const SignUpFormProvider: FC<SignUpFormProviderProps> = ({ children }) => {
-  const { methods, onHandleSubmit, loading } = useSignUpForm();
+const SignInFormProvider = ({ children }: Props) => {
+  const { methods, onHandleSubmit, loading } = useSignInForm();
+
   return (
     <FormProvider {...methods}>
       <form onSubmit={onHandleSubmit} className="h-full">
@@ -23,4 +24,4 @@ const SignUpFormProvider: FC<SignUpFormProviderProps> = ({ children }) => {
   );
 };
 
-export default SignUpFormProvider;
+export default SignInFormProvider;

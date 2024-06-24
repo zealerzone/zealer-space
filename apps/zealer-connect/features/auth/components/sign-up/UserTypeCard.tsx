@@ -12,23 +12,18 @@ import {
 import { cn } from "@ui/lib/utils";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 
+import { useAuthStepZus } from "../../_hooks/use-auth-step-zus";
+
 type Props = {
   value: "athlete" | "lead";
   title: string;
   text: string;
   register: UseFormRegister<FieldValues>;
-  userType: "athlete" | "lead";
-  setUserType: React.Dispatch<React.SetStateAction<"athlete" | "lead">>;
 };
 
-const UserTypeCard = ({
-  register,
-  setUserType,
-  text,
-  title,
-  userType,
-  value,
-}: Props) => {
+const UserTypeCard = ({ register, text, title, value }: Props) => {
+  const { userType, setUserType } = useAuthStepZus();
+
   return (
     <Label htmlFor={value}>
       <Card
@@ -53,7 +48,7 @@ const UserTypeCard = ({
                 )}
               />
             </Card>
-            <div className="">
+            <div>
               <CardDescription className="text-iridium">
                 {title}
               </CardDescription>
@@ -62,23 +57,24 @@ const UserTypeCard = ({
               </CardDescription>
             </div>
           </div>
-          <div>
-            <div
-              className={cn(
-                "h-4 w-4 rounded-full",
-                userType == value ? "bg-orange" : "bg-transparent",
-              )}
-            >
-              <Input
-                {...register("type", {
-                  onChange: (event) => setUserType(event.target.value),
-                })}
-                value={value}
-                id={value}
-                className="hidden"
-                type="radio"
-              />
-            </div>
+          <div
+            className={cn(
+              "h-4 w-4 rounded-full",
+              userType == value ? "bg-orange" : "bg-transparent",
+            )}
+          >
+            <Input
+              {...register("type", {
+                onChange: (event) => {
+                  setUserType(event.target.value);
+                },
+              })}
+              value={value}
+              checked={userType === value}
+              id={value}
+              className="hidden"
+              type="radio"
+            />
           </div>
         </CardContent>
       </Card>

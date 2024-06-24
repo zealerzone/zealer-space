@@ -5,11 +5,9 @@ import UserTypeCard from "./UserTypeCard";
 
 type Props = {
   register: UseFormRegister<FieldValues>;
-  userType: "athlete" | "lead";
-  setUserType: React.Dispatch<React.SetStateAction<"athlete" | "lead">>;
 };
 
-const TypeSelectionForm = ({ register, setUserType, userType }: Props) => {
+const TypeSelectionForm = ({ register }: Props) => {
   return (
     <>
       <h2 className=" text-gravel font-bold  md:text-4xl">Create an account</h2>
@@ -19,19 +17,15 @@ const TypeSelectionForm = ({ register, setUserType, userType }: Props) => {
       </p>
       <UserTypeCard
         register={register}
-        setUserType={setUserType}
-        userType={userType}
-        value="lead"
-        title="I lead an athlete group"
-        text="Setting up my circle for the athletes."
-      />
-      <UserTypeCard
-        register={register}
-        setUserType={setUserType}
-        userType={userType}
         value="athlete"
         title="Im an athlete"
         text="Looking to connect with other athletes and coaches."
+      />
+      <UserTypeCard
+        register={register}
+        value="lead"
+        title="I lead an athlete group"
+        text="Setting up my circle for the athletes."
       />
     </>
   );

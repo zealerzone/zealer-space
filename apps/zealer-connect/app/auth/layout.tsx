@@ -15,7 +15,7 @@ const MainLayout = async ({ children }: Props) => {
   // if (userId) redirect("/");
 
   return (
-    <div className="flex h-screen w-full justify-center">
+    <div className=" flex h-screen w-full justify-center ">
       <div className="ld:w-full flex w-[600px] flex-col items-start p-6">
         <Image
           src="/logo.svg"

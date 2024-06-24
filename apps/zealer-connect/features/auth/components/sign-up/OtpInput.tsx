@@ -1,13 +1,12 @@
 import React from "react";
+import { InputOTP, InputOTPSlot } from "@ui/index";
 
-import { InputOTP, InputOTPSlot } from "./InputOtp";
+import { useAuthStepZus } from "../../_hooks/use-auth-step-zus";
 
-type Props = {
-  otp: string;
-  setOtp: React.Dispatch<React.SetStateAction<string>>;
-};
+type Props = {};
 
-const OTPInput = ({ otp, setOtp }: Props) => {
+const OTPInput = ({}: Props) => {
+  const { otp, setOtp } = useAuthStepZus();
   return (
     <InputOTP maxLength={6} value={otp} onChange={(otp) => setOtp(otp)}>
       <div className="flex gap-3">

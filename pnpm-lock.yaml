@@ -260,7 +260,7 @@ importers:
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.2)(zod@3.23.8)
       '@tanstack/react-query':
-        specifier: ^5.40.1
+        specifier: ^5.45.1
         version: 5.45.1(react@18.3.1)
       '@tanstack/react-table':
         specifier: ^8.17.3
@@ -278,7 +278,7 @@ importers:
         specifier: ^0.5.1
         version: 0.5.1(drizzle-orm@0.30.10)(zod@3.23.8)
       hono:
-        specifier: ^4.4.4
+        specifier: ^4.4.7
         version: 4.4.7
       input-otp:
         specifier: ^1.2.4
@@ -293,7 +293,7 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       react-hook-form:
-        specifier: ^7.51.5
+        specifier: ^7.52.0
         version: 7.52.0(react@18.3.1)
       zod:
         specifier: ^3.23.8
@@ -339,10 +339,10 @@ importers:
   packages/eslint-config:
     devDependencies:
       '@typescript-eslint/eslint-plugin':
-        specifier: ^7.12.0
+        specifier: ^7.13.1
         version: 7.13.1(@typescript-eslint/parser@7.13.1)(eslint@8.57.0)(typescript@5.5.2)
       '@typescript-eslint/parser':
-        specifier: ^7.12.0
+        specifier: ^7.13.1
         version: 7.13.1(eslint@8.57.0)(typescript@5.5.2)
       '@vercel/style-guide':
         specifier: ^6.0.0
@@ -357,7 +357,7 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       typescript:
-        specifier: ^5.4.5
+        specifier: ^5.5.2
         version: 5.5.2
 
   packages/typescript-config: {}
@@ -430,6 +430,9 @@ importers:
       framer-motion:
         specifier: ^11.2.10
         version: 11.2.11(react-dom@18.3.1)(react@18.3.1)
+      input-otp:
+        specifier: ^1.2.4
+        version: 1.2.4(react-dom@18.3.1)(react@18.3.1)
       lucide-react:
         specifier: ^0.378.0
         version: 0.378.0(react@18.3.1)

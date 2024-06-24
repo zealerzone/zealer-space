@@ -9,8 +9,10 @@ import { useForm } from "react-hook-form";
 
 import { onCompleteUserRegistration } from "../api/authAction";
 import { UserRegistrationProps, UserRegistrationSchema } from "../auth.schema";
+import { useAuthStepZus } from "./use-auth-step-zus";
 
 export const useSignUpForm = () => {
+  const { setCurrentStep, currentStep } = useAuthStepZus();
   const [loading, setLoading] = useState<boolean>(false);
   const { signUp, isLoaded, setActive } = useSignUp();
   const router = useRouter();
@@ -25,7 +27,6 @@ export const useSignUpForm = () => {
   const onGenerateOTP = async (
     email: string,
     password: string,
-    onNext: React.Dispatch<React.SetStateAction<number>>,
   ) => {
     if (!isLoaded) return;
 
@@ -37,7 +38,7 @@ export const useSignUpForm = () => {
 
       await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
 
-      onNext((prev) => prev + 1);
+      setCurrentStep(currentStep + 1);
     } catch (error: any) {
       toast.error(error.errors[0].longMessage);
     }
