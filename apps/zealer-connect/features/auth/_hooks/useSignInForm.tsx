@@ -30,12 +30,15 @@ export const useSignInForm = () => {
           await setActive({ session: authenticated.createdSessionId });
           toast.success("Welcome back!");
 
-          router.push("/dashboard");
+          router.push("/athlete");
         }
       } catch (error: any) {
         setLoading(false);
-        if (error.errors[0].code === "form_password_incorrect")
+        if (error.errors[0].code === "form_password_incorrect") {
           toast.error("email/password is incorrect try again");
+        } else {
+          toast.error("Please try again");
+        }
       }
     },
   );
