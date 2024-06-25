@@ -5,18 +5,26 @@ import { InferRequestType, InferResponseType } from "hono";
 import { client } from "@/lib/hono";
 
 type ResponseType = InferResponseType<
-  typeof client.api.users.onCompleteUserRegistration.$post
+  typeof client.api.users.registerUser.$post
 >;
-type RequestType = InferRequestType<
-  typeof client.api.users.onCompleteUserRegistration.$post
+export type UserRegisterRequestType = InferRequestType<
+  typeof client.api.users.registerUser.$post
 >["json"];
 
 export const onCompleteUserRegistration = async (
-  values: RequestType,
-): Promise<ResponseType> => {
-  const registered = await client.api.users.onCompleteUserRegistration.$post({
-    json: values,
-  });
+  values: UserRegisterRequestType,
+): Promise<ResponseType | null> => {
+  console.log("Servervales ->", values);
+  let res = null;
+  try {
+    const registered = await client.api.users.registerUser.$post({
+      json: values,
+    });
 
-  return await registered.json();
+    res = await registered.json();
+  } catch (error) {
+    console.log("[authAction | onCompleteUserRegistration | Error]->", error);
+  }
+
+  return res;
 };

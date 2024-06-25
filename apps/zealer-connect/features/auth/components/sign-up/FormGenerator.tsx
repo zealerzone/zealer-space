@@ -49,7 +49,7 @@ const FormGenerator = ({
             name={name}
             render={({ message }) => (
               <p className="mt-2 text-red-400">
-                {message === "Required" ? "" : message}
+                {message === "Required" ? null : message}
               </p>
             )}
           />
@@ -72,7 +72,7 @@ const FormGenerator = ({
             name={name}
             render={({ message }) => (
               <p className="mt-2 text-red-400">
-                {message === "Required" ? "" : message}
+                {message === "Required" ? null : message}
               </p>
             )}
           />
@@ -95,7 +95,7 @@ const FormGenerator = ({
             name={name}
             render={({ message }) => (
               <p className="mt-2 text-red-400">
-                {message === "Required" ? "" : message}
+                {message === "Required" ? null : message}
               </p>
             )}
           />

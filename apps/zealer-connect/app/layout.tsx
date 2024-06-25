@@ -7,6 +7,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider, Toaster } from "@ui/index";
 import { cn } from "@ui/lib/utils";
 
+import { env } from "@/env";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

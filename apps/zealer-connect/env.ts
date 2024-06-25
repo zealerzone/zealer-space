@@ -6,6 +6,7 @@ export const env = createEnv({
     DATABASE_URL: z.string().url(),
     NODE_ENV: z.string().min(1),
     AUTH_DRIZZLE_URL: z.string().url(),
+    CLERK_PUBLISHABLE_KEY: z.string(),
     // CLOUDFLARE_ACCOUNT_ID: z.string().min(1),
     // CLOUDFLARE_ACCESS_KEY_ID: z.string().min(1),
     // CLOUDFLARE_SECRET_ACCESS_KEY: z.string().min(1),
@@ -13,6 +14,7 @@ export const env = createEnv({
   },
   client: {
     NEXT_PUBLIC_APP_URL: z.string().url(),
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string(),
     // NEXT_PUBLIC_BUCKET_URL: z.string().url(),
     // NEXT_PUBLIC_KNOCK_PUBLIC_API_KEY: z.string().min(1),
     // NEXT_PUBLIC_KNOCK_FEED_ID: z.string().min(1),
@@ -22,6 +24,9 @@ export const env = createEnv({
     DATABASE_URL: process.env.DATABASE_URL,
     AUTH_DRIZZLE_URL: process.env.AUTH_DRIZZLE_URL,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
+      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    CLERK_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     // CLOUDFLARE_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID,
     // CLOUDFLARE_ACCESS_KEY_ID: process.env.CLOUDFLARE_ACCESS_KEY_ID,
     // CLOUDFLARE_SECRET_ACCESS_KEY: process.env.CLOUDFLARE_SECRET_ACCESS_KEY,

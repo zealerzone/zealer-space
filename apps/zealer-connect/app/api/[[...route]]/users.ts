@@ -8,8 +8,8 @@ import { inserUserSchema, users } from "@/db/schema";
 
 //  This is called to register the user with Clerk
 const app = new Hono().post(
-  "/onCompleteUserRegistration",
-  clerkMiddleware(),
+  "/registerUser",
+  // clerkMiddleware(),
   zValidator(
     "json",
     inserUserSchema.pick({
@@ -20,12 +20,12 @@ const app = new Hono().post(
     }),
   ),
   async (c) => {
-    const auth = getAuth(c);
+    // const auth = getAuth(c);
 
     const values = c.req.valid("json");
-    if (!auth?.userId) {
-      return c.json({ error: "Unauthorized" }, 401);
-    }
+    // if (!auth?.userId) {
+    //   return c.json({ error: "Unauthorized" }, 401);
+    // }
 
     const registered = await db
       .insert(users)

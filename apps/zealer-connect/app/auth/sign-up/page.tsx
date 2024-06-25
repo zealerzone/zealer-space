@@ -5,7 +5,7 @@ import SignUpFormProvider from "@/features/auth/components/sign-up/SignUpFormPro
 
 const SignUp = () => {
   return (
-    <div className="  w-full flex-1 py-36 md:px-16 ">
+    <div className="  flex w-full items-center  justify-center md:px-16 ">
       <div className="flex h-full flex-col gap-3">
         <SignUpFormProvider>
           <HighLightBar />
